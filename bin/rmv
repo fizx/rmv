@@ -5,7 +5,7 @@ if ARGV.length != 2
 end
 
 re, target = ARGV
-re = Regexp.comile(re)
+re = Regexp.compile(re)
 require "fileutils"
 include FileUtils::Verbose
 
@@ -17,7 +17,12 @@ files = Dir["**/*"].map do |path|
   end
 end.compact
 
-abort "targets are not unique" if files.map{|f| f.last}.uniq.length != files.length
+uniq_files = files.map{|f| f.last}.uniq
+
+if uniq_files.length != files.length
+  (files.map{|f| f.last} - uniq_files).uniq
+  abort "targets are not unique: #{(files - uniq_files).uniq.inspect}" 
+end
 
 files.each do |from, to|
   mv from, to
