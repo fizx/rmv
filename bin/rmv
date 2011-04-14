@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+if ARGV.length != 2
+  abort "Usage: rmv SOURCE_REGEX TARGET_WITH_SUBSTITUTIONS"
+end
+
+re, target = ARGV
+re = Regexp.comile(re)
+require "fileutils"
+include FileUtils::Verbose
+
+files = Dir["**/*"].map do |path|
+  if path =~ re
+    [path, path.sub(re, target)]
+  else 
+    nil
+  end
+end.compact
+
+abort "targets are not unique" if files.map{|f| f.last}.uniq.length != files.length
+
+files.each do |from, to|
+  mv from, to
+end
+
