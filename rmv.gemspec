@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "bin/rmv",
     "lib/EMPTY",
+    "rmv.gemspec",
     "test/helper.rb",
     "test/test_rmv.rb"
   ]
