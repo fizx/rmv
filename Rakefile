@@ -15,8 +15,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "rmv"
   gem.homepage = "http://github.com/fizx/rmv"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{regex mv}
+  gem.description = %Q{regex mv}
   gem.email = "kyle@kylemaxwell.com"
   gem.authors = ["Kyle Maxwell"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
