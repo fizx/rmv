@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require File.dirname(__FILE__) + "/../lib/rmv"
+
+if ARGV.length != 2
+  abort "Usage: #{File.basename($0)} FROM TO"
+end
+
+from, to = ARGV
+re = Regexp.compile(/(.*)(#{from})(.*)/)
+target = "\\1#{to}\\3"
+
+rmv(re, target)
